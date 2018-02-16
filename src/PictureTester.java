@@ -11,16 +11,25 @@ public class PictureTester
   /** Method to test zeroBlue */
   public static void testZeroBlue()
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("../assets/beach.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
   }
   
+  /** Method to test zeroRed */
+  public static void testZeroRed()
+  {
+	  Picture beach = new Picture("../assets/beach.jpg");
+	  beach.explore();
+	  beach.zeroRed();
+	  beach.explore();
+  }
+  
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture caterpillar = new Picture("../assets/caterpillar.jpg");
     caterpillar.explore();
     caterpillar.mirrorVertical();
     caterpillar.explore();
@@ -29,7 +38,7 @@ public class PictureTester
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
-    Picture temple = new Picture("temple.jpg");
+    Picture temple = new Picture("../assets/temple.jpg");
     temple.explore();
     temple.mirrorTemple();
     temple.explore();
@@ -38,7 +47,7 @@ public class PictureTester
   /** Method to test the collage method */
   public static void testCollage()
   {
-    Picture canvas = new Picture("640x480.jpg");
+    Picture canvas = new Picture("../assets/640x480.jpg");
     canvas.createCollage();
     canvas.explore();
   }
@@ -46,7 +55,7 @@ public class PictureTester
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
-    Picture swan = new Picture("swan.jpg");
+    Picture swan = new Picture("../assetsswan.jpg");
     swan.edgeDetection(10);
     swan.explore();
   }
@@ -58,7 +67,8 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+    //testZeroBlue();
+	  testZeroRed();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
