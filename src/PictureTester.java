@@ -93,6 +93,40 @@ public class PictureTester {
 		}
 		pic.explore();
 	}
+	
+	/** Mirrors the image vertically. */
+	public static void verticalMirror() {
+		Picture pic = new Picture("../assets/redMotorcycle.jpg");
+		pic.explore();
+		Pixel[][] picPixels = pic.getPixels2D();
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		for (int i = 0; i < picPixels.length; i++) {
+			for (int j = 0; j < picPixels[i].length; j++) {
+				leftPixel = picPixels[i][j];
+				rightPixel = picPixels[picPixels.length - 1][picPixels[i].length - 1 -j];
+				rightPixel.setColor(leftPixel.getColor());
+			}
+		}
+		pic.explore();
+	}
+	
+	/** Mirrors the image horizontally. */
+	public static void horizontallyMirror() {
+		Picture pic = new Picture("../assets/redMotorcycle.jpg");
+		pic.explore();
+		Pixel[][] picPixels = pic.getPixels2D();
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		for (int row = 0; row < picPixels.length; row++) {
+			for (int col = 0; col < picPixels[row].length; col++) {
+				leftPixel = picPixels[row][col];
+				rightPixel = picPixels[picPixels.length - 1 - row][col];
+				rightPixel.setColor(leftPixel.getColor());
+			}
+		}
+		pic.explore();
+	}
 
 	/**
 	 * Main method for testing. Every class can have a main
@@ -125,5 +159,6 @@ public class PictureTester {
 		// testGetAverageForColumn(0);
 		// convertToBlackAndWhite();
 		// adjustBrightness(.8);
+		verticalMirror();
 	}
 }
