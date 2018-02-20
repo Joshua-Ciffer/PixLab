@@ -1,4 +1,3 @@
-import java.awt.Color;
 
 /**
  * This class contains class (static) methods
@@ -135,49 +134,58 @@ public class PictureTester {
 		Picture pic1 = new Picture("../assets/butterfly1.jpg");
 		pic1.explore();
 		Picture pic2 = new Picture(pic1);
-		Pixel[][] pixels = pic2.getPixels2D();
-		Pixel leftPixel, rightPixel, tempPixel;
-		Color tempColor;
-		for (int row = 0; row < pixels.length; row++) {
-			for (int col = 0; col < pixels[row].length / 2; col++) {
-				rightPixel = pixels[row][col];
-				leftPixel = pixels[row][pixels[row].length - 1 - col];
+		Pixel[][] pixels1 = pic1.getPixels2D();
+		Pixel[][] pixels2 = pic2.getPixels2D();
+		for (int row = 0; row < pixels1.length; row++) {
+			for (int col = 0; col < pixels1[row].length; col++) {
+				pixels2[row][pixels2[row].length - col - 1].setColor(pixels1[row][col].getColor());
 			}
 		}
 		pic2.explore();
-		
-//		int mirrorPoint = 276;
-//		Pixel leftPixel = null;
-//		Pixel rightPixel = null;
-//		int count = 0;
-//		Pixel[][] pixels = this.getPixels2D();
-//
-//		// loop through the rows
-//		for (int row = 27; row < 97; row++) {
-//			// loop from 13 to just before the mirror point
-//			for (int col = 13; col < mirrorPoint; col++) {
-//
-//				leftPixel = pixels[row][col];
-//				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
-//				rightPixel.setColor(leftPixel.getColor());
-//			}
-//		}
-//		
-//		Pixel[][] pixels = this.getPixels2D();
-//		Pixel leftPixel = null;
-//		Pixel rightPixel = null;
-//		int width = pixels[0].length;
-//		for (int row = 0; row < pixels.length; row++) {
-//			for (int col = 0; col < width / 2; col++) {
-//				leftPixel = pixels[row][col];
-//				rightPixel = pixels[row][width - 1 - col];
-//				rightPixel.setColor(leftPixel.getColor());
-//			}
-//		}
+	}
+
+	/** Flip the image horizontally. */
+	public static void flipVertically() {
+		Picture pic1 = new Picture("../assets/butterfly1.jpg");
+		pic1.explore();
+		Picture pic2 = new Picture(pic1);
+		Pixel[][] pixels1 = pic1.getPixels2D();
+		Pixel[][] pixels2 = pic2.getPixels2D();
+		for (int row = 0; row < pixels1.length; row++) {
+			for (int col = 0; col < pixels1[row].length; col++) {
+				pixels2[pixels2.length - 1 - row][col].setColor(pixels1[row][col].getColor());
+			}
+		}
+		pic2.explore();
+	}
+
+	/** Combines the left half of the motorcycle with the right half of the butterfly. */
+	public static void buttCycle() {
+		Picture pic1 = new Picture("../assets/butterfly1.jpg");
+		Picture pic2 = new Picture("../assets/redMotorcycle.jpg");
+		pic1.explore();
+		pic2.explore();
+		Pixel[][] pixels1 = pic1.getPixels2D();
+		Pixel[][] pixels2 = pic2.getPixels2D();
+		System.out.println(pic1.getHeight() + " " + pic1.getWidth());
+		System.out.println(pic2.getHeight() + " " + pic2.getWidth());
+		int length;
+		if (pixels1.length < pixels2.length) {
+			length = pixels1.length;
+		} else {
+			length = pixels2.length;
+		}
+		Pixel leftPixel, rightPixel;
+		for (int row = 0; row < length; row++) {
+			for (int col = 0; col < pixels2[row].length / 2; col++) {
+				leftPixel = pixels1[row][col];
+				rightPixel = pixels2[row][pixels2[row].length - 1 - col];
+				rightPixel.setColor(leftPixel.getColor());
+			}
+		}
+		pic2.explore();
 	}
 	
-	/** Flip the image horizontally. */
-
 	/**
 	 * Main method for testing. Every class can have a main
 	 * method in Java
@@ -211,6 +219,8 @@ public class PictureTester {
 		// adjustBrightness(.8);
 		// verticalMirror();
 		// horizontallyMirror();
-		flipHorizontally();
+		// flipHorizontally();
+		// flipVertically();
+		buttCycle();
 	}
 }
