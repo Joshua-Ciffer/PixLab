@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 /**
  * This class contains class (static) methods
  * that will help you test the Picture class
@@ -93,31 +95,31 @@ public class PictureTester {
 		}
 		pic.explore();
 	}
-	
+
 	/** Mirrors the image vertically. */
 	public static void verticalMirror() {
 		Picture pic = new Picture("../assets/redMotorcycle.jpg");
 		pic.explore();
 		Pixel[][] picPixels = pic.getPixels2D();
-		Pixel leftPixel = null;
-		Pixel rightPixel = null;
-		for (int i = 0; i < picPixels.length; i++) {
-			for (int j = 0; j < picPixels[i].length; j++) {
-				leftPixel = picPixels[i][j];
-				rightPixel = picPixels[picPixels.length - 1][picPixels[i].length - 1 -j];
+		Pixel leftPixel;
+		Pixel rightPixel;
+		for (int row = 0; row < picPixels.length; row++) {
+			for (int col = 0; col < picPixels[row].length; col++) {
+				leftPixel = picPixels[row][col];
+				rightPixel = picPixels[row][picPixels[row].length - 1 - col];
 				rightPixel.setColor(leftPixel.getColor());
 			}
 		}
 		pic.explore();
 	}
-	
+
 	/** Mirrors the image horizontally. */
 	public static void horizontallyMirror() {
 		Picture pic = new Picture("../assets/redMotorcycle.jpg");
 		pic.explore();
 		Pixel[][] picPixels = pic.getPixels2D();
-		Pixel leftPixel = null;
-		Pixel rightPixel = null;
+		Pixel leftPixel;
+		Pixel rightPixel;
 		for (int row = 0; row < picPixels.length; row++) {
 			for (int col = 0; col < picPixels[row].length; col++) {
 				leftPixel = picPixels[row][col];
@@ -127,6 +129,54 @@ public class PictureTester {
 		}
 		pic.explore();
 	}
+
+	/** Flip the image horizontally. */
+	public static void flipHorizontally() {
+		Picture pic1 = new Picture("../assets/butterfly1.jpg");
+		pic1.explore();
+		Picture pic2 = new Picture(pic1);
+		Pixel[][] pixels = pic2.getPixels2D();
+		Pixel leftPixel, rightPixel, tempPixel;
+		Color tempColor;
+		for (int row = 0; row < pixels.length; row++) {
+			for (int col = 0; col < pixels[row].length / 2; col++) {
+				rightPixel = pixels[row][col];
+				leftPixel = pixels[row][pixels[row].length - 1 - col];
+			}
+		}
+		pic2.explore();
+		
+//		int mirrorPoint = 276;
+//		Pixel leftPixel = null;
+//		Pixel rightPixel = null;
+//		int count = 0;
+//		Pixel[][] pixels = this.getPixels2D();
+//
+//		// loop through the rows
+//		for (int row = 27; row < 97; row++) {
+//			// loop from 13 to just before the mirror point
+//			for (int col = 13; col < mirrorPoint; col++) {
+//
+//				leftPixel = pixels[row][col];
+//				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+//				rightPixel.setColor(leftPixel.getColor());
+//			}
+//		}
+//		
+//		Pixel[][] pixels = this.getPixels2D();
+//		Pixel leftPixel = null;
+//		Pixel rightPixel = null;
+//		int width = pixels[0].length;
+//		for (int row = 0; row < pixels.length; row++) {
+//			for (int col = 0; col < width / 2; col++) {
+//				leftPixel = pixels[row][col];
+//				rightPixel = pixels[row][width - 1 - col];
+//				rightPixel.setColor(leftPixel.getColor());
+//			}
+//		}
+	}
+	
+	/** Flip the image horizontally. */
 
 	/**
 	 * Main method for testing. Every class can have a main
@@ -159,6 +209,8 @@ public class PictureTester {
 		// testGetAverageForColumn(0);
 		// convertToBlackAndWhite();
 		// adjustBrightness(.8);
-		verticalMirror();
+		// verticalMirror();
+		// horizontallyMirror();
+		flipHorizontally();
 	}
 }
