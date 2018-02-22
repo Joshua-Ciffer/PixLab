@@ -5,6 +5,7 @@
  * methods. Uncomment the methods and the code
  * in the main to test.
  * 
+ * @author Joshua Ciffer
  * @author Barbara Ericson
  */
 public class PictureTester {
