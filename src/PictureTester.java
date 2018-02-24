@@ -181,9 +181,22 @@ public class PictureTester {
 			}
 		}
 		pic3.explore();
-
 	}
-
+	
+	/** Repairs the Greek temple picture. */
+	public static void repairTemple() {
+		Picture pic1 = new Picture("../assets/temple.jpg");
+		Picture pic2 = new Picture(pic1);
+		pic1.explore();
+		Pixel[][] pixels = pic2.getPixels2D();
+		for (int row = 27; row <= 96; row++) {
+			for (int col = 13; col <= 275; col++) {
+				pixels[row][pixels[row].length - 1 - col].setColor(pixels[row][col].getColor());
+			}
+		}
+		pic2.explore();
+	}
+	
 	/**
 	 * Main method for testing. Every class can have a main
 	 * method in Java
@@ -220,5 +233,6 @@ public class PictureTester {
 		// flipHorizontally();
 		// flipVertically();
 		// buttCycle();
+		// repairTemple();
 	}
 }
