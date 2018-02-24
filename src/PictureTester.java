@@ -162,31 +162,27 @@ public class PictureTester {
 
 	/** Combines the left half of the motorcycle with the right half of the butterfly. */
 	public static void buttCycle() {
-		Picture pic1 = new Picture("../assets/butterfly1.jpg");
-		Picture pic2 = new Picture("../assets/redMotorcycle.jpg");
-		pic1.explore();
-		pic2.explore();
-		Pixel[][] pixels1 = pic1.getPixels2D();
+		Picture pic = new Picture("../assets/redMotorcycle.jpg");
+		Picture pic2 = new Picture("../assets/butterfly1.jpg");
+		pic.explore();
+		Pixel[][] pixels = pic.getPixels2D();
 		Pixel[][] pixels2 = pic2.getPixels2D();
-		System.out.println(pic1.getHeight() + " " + pic1.getWidth());
-		System.out.println(pic2.getHeight() + " " + pic2.getWidth());
-		int length;
-		if (pixels1.length < pixels2.length) {
-			length = pixels1.length;
-		} else {
-			length = pixels2.length;
-		}
-		Pixel leftPixel, rightPixel;
-		for (int row = 0; row < length; row++) {
-			for (int col = 0; col < pixels2[row].length / 2; col++) {
-				leftPixel = pixels1[row][col];
-				rightPixel = pixels2[row][pixels2[row].length - 1 - col];
-				rightPixel.setColor(leftPixel.getColor());
+		Picture pic3 = new Picture(Math.min(pixels.length, pixels2.length), (pixels[0].length / 2) + (pixels2[0].length / 2));
+		Pixel[][] pixelCombine = pic3.getPixels2D();
+		for (int row = 0; row < pixelCombine.length; row++) {
+			for (int col = 0; col < pixelCombine[row].length - (pixels2[0].length / 2); col++) {
+				pixelCombine[row][col].setColor(pixels[row][col].getColor());
 			}
 		}
-		pic2.explore();
+		for (int row = 0; row < Math.min(pixels.length, pixels2.length); row++) {
+			for (int col = 0; col < pixels2[row].length / 2; col++) {
+				pixelCombine[row][col + (pixels[0].length / 2)].setColor(pixels2[row][col + pixels2[0].length / 2].getColor());
+			}
+		}
+		pic3.explore();
+
 	}
-	
+
 	/**
 	 * Main method for testing. Every class can have a main
 	 * method in Java
