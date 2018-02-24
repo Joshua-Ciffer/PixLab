@@ -168,8 +168,6 @@ public class PictureTester {
 		pic2.explore();
 		Pixel[][] pixels1 = pic1.getPixels2D();
 		Pixel[][] pixels2 = pic2.getPixels2D();
-		System.out.println(pic1.getHeight() + " " + pic1.getWidth());
-		System.out.println(pic2.getHeight() + " " + pic2.getWidth());
 		int length;
 		if (pixels1.length < pixels2.length) {
 			length = pixels1.length;
@@ -222,6 +220,6 @@ public class PictureTester {
 		// horizontallyMirror();
 		// flipHorizontally();
 		// flipVertically();
-		buttCycle();
+		// buttCycle();
 	}
 }
