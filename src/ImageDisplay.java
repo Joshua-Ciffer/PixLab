@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.*;
 
 /**
  * Class to display an image and the current location with a + sign
@@ -9,6 +8,10 @@ import java.awt.image.*;
  */
 public class ImageDisplay extends JPanel implements Scrollable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/////////////////////////// fields (attributes ///////////////////////////
 	/** the image to draw */
 	private Image image;

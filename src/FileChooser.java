@@ -1,6 +1,5 @@
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import java.util.Properties;
 import java.io.*;
 import java.net.*;
 
@@ -23,7 +22,6 @@ public class FileChooser {
 	public static String getMediaPath(String fileName) {
 		String path = null;
 		String directory = getMediaDirectory();
-		boolean done = true;
 
 		// get the full path
 		path = directory + fileName;
@@ -94,9 +92,9 @@ public class FileChooser {
 	 * Method to get the directory for the media
 	 * @return the media directory
 	 */
+	@SuppressWarnings("rawtypes")
 	public static String getMediaDirectory() {
 		String directory = null;
-		boolean done = false;
 		File dirFile = null;
 
 		// try to find the images directory
